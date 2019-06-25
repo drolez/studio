@@ -1,0 +1,13 @@
+/* TEAM */
+The Dictator: Vojtěch "Cerx" Ducháček
+https://cerx.pw/    tweet @CerxMe
+
+Peasant: Reye
+http://reye.me/     tweet @Reye_Me
+
+/* SITE */
+a Vue.js web app
+Unlicensed, open source-code @ https://github.com/drolez/studio
+
+/* THANKS */
+Discord's HackWeek: https://blog.discordapp.com/discord-community-hack-week-build-and-create-alongside-us-6b2a7b7bba33
