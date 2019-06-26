@@ -1,25 +1,47 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+<template lang="pug">
+    #app
+        router-view
 </template>
-<style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
+<script>
+  // import io from 'socket.io-client'
+  export default {
+    name: 'HelloWorld',
+    props: {
+      msg: String
+    },
+    mounted: async () => {
+      // Create WebSocket connection.
+      const socket = new WebSocket('ws://82.114.198.147:4555')
 
-#nav
-  padding 30px
-  a
-    font-weight bold
-    color #2c3e50
-    &.router-link-exact-active
-      color #42b983
+      console.log(socket.bufferedAmount)
+      // Connection opened
+      socket.addEventListener('open', function (event) {
+        socket.send('test1')
+      })
+
+      // Listen for messages
+      socket.addEventListener('message', function (event) {
+        console.log('Message from server ', event.data)
+      })
+    }
+  }
+
+</script>
+<style lang="stylus">
+    // CSS reset
+    // https://github.com/bymathias/normalize.styl
+    @import '~normalize-styl'
+
+    // Main app container
+    #app
+        font-family 'Avenir', Helvetica, Arial, sans-serif
+        -webkit-font-smoothing antialiased
+        -moz-osx-font-smoothing grayscale
+        text-align center
+        color #FFF
+        background #2C2F33
+        height 100vh
+        width 100vw
+        display flex
+
 </style>
