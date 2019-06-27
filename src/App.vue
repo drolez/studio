@@ -31,17 +31,9 @@
     // CSS reset
     // https://github.com/bymathias/normalize.styl
     @import '~normalize-styl'
+    @import 'assets/styles/95'
 
-    // Main app container
     #app
-        font-family 'Avenir', Helvetica, Arial, sans-serif
-        -webkit-font-smoothing antialiased
-        -moz-osx-font-smoothing grayscale
-        text-align center
-        color #FFF
-        background #2C2F33
-        height 100vh
-        width 100vw
-        display flex
+      background-image url('assets/wallpapers/CIRCLES.png')
 
 </style>

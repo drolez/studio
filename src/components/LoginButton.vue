@@ -1,7 +1,7 @@
 <template lang='pug'>
-    .login
-        button(@click="login") Login with Discord
-
+    button(@click="login")
+      img(src="@/assets/icons/discord95.png")
+      | Login with Discord
 </template>
 
 <script>
@@ -24,9 +24,6 @@
 
 <style lang='stylus' scoped>
     @import './../assets/styles/colors.styl'
-    .login
-        background $Dark-but-not-black
     button
-        color white
-        background $Blurple
+        //background $Blurple
 </style>
