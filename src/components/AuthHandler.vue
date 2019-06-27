@@ -9,9 +9,9 @@
     name: 'AuthHandler',
     created: function () {
       let hash = this.$route.hash
-      if (hash) {
+      const tokenPattern = /access_token=([a-zA-z0-9]*)/
+      if (hash.match(tokenPattern)) {
         // Checks for callback data
-        const tokenPattern = /access_token=([a-zA-z0-9]*)/
         this.AUTH_SUCCESS(hash.match(tokenPattern)[1])
         this.$router.push('/dashboard')
       } else {
