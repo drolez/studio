@@ -1,8 +1,11 @@
 <template lang='pug'>
     .command
-        p Send bot command:
-        input(v-model="message")
-        button(@click="sendSocket") send {{ message }}
+        h1 Send bot command:
+        label(for="server") Server
+        input(v-model="server" name="server")
+        label(for="message") Message
+        input(v-model="message" name ="message")
+        button(@click="sendSocket") send
         p Status: {{status}}
         p Response:
         pre.res {{ response }}
@@ -16,6 +19,7 @@
       return {
         message: '',
         response: '',
+        server: 'wss://82.114.198.147:4555',
         status: ''
       }
     },
@@ -24,7 +28,7 @@
         sendSocket: async function () {
           // Create WebSocket connection.
           this.status = 'connecting'
-          const socket = new WebSocket('wss://82.114.198.147:4555')
+          const socket = new WebSocket(this.server)
           // Connection opened
           socket.addEventListener('open', async function (event) {
             this.status = 'sending command'
@@ -47,6 +51,10 @@
     .res
         background $Dark-but-not-black
     .command
+        display flex
+        flex-direction column
+        align-items center
+        justify-content center
         backround teal
     pre
         background yellow
