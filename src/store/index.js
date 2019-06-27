@@ -1,6 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersistence from 'vuex-persist'
 Vue.use(Vuex)
+
+// persistently store auth data
+const vuexPersist = new VuexPersistence({
+  key: 'my-app',
+  storage: localStorage,
+  reducer: state => ({auth: state.auth })
+})
 
 // Dynamically load modules from module files
 let modulesList = {}
@@ -14,6 +22,8 @@ moduleImport.keys().forEach((file, index) => { // go trough all files
   modulesList[name] = module
 })
 
+// eport store
 export default new Vuex.Store({
-  modules: modulesList
+  modules: modulesList,
+  plugins: [vuexPersist.plugin]
 })

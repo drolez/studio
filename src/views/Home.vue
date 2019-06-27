@@ -1,18 +1,26 @@
 <template lang="pug">
   .home
-    login
-    HelloWorld(msg="Welcome to Your Vue.js App")
+    LoginButton(v-if='!isAuthenticated')
+    .open-dash-callout(v-if='isAuthenticated')
+        router-link(to='dashboard') Go to dashboard
+        LogoutButton()
+    HelloWorld(msg="Drolez Studio")
 </template>
 
 <script>
   // @ is an alias to /src
   import HelloWorld from '@/components/HelloWorld.vue'
-  import Login from '@/components/Login.vue'
+  import LoginButton from '@/components/LoginButton.vue'
+  import LogoutButton from '@/components/LogoutButton.vue'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'home',
     components: {
-      HelloWorld, Login
+      LogoutButton, HelloWorld, LoginButton
+    },
+    computed: {
+      ...mapGetters(['isAuthenticated'])
     }
   }
 </script>

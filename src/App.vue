@@ -5,13 +5,13 @@
 <script>
   // import io from 'socket.io-client'
   export default {
-    name: 'HelloWorld',
+    name: 'Studio',
     props: {
       msg: String
-    },
-    mounted: async () => {
+    }
+    /* mounted: async () => {
       // Create WebSocket connection.
-      const socket = new WebSocket('ws://82.114.198.147:4555')
+      const socket = new WebSocket('wss://82.114.198.147:4555')
 
       console.log(socket.bufferedAmount)
       // Connection opened
@@ -23,7 +23,7 @@
       socket.addEventListener('message', function (event) {
         console.log('Message from server ', event.data)
       })
-    }
+    } */
   }
 
 </script>
