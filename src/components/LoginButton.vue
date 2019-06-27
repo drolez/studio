@@ -25,7 +25,7 @@
 <style lang='stylus' scoped>
     @import './../assets/styles/colors.styl'
     .login
-        background green
+        background $Dark-but-not-black
     button
         color white
         background $Blurple

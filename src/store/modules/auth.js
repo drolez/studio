@@ -33,5 +33,5 @@ export default {
     AUTH_LOGOUT ({ state, commit, dispatch }) {
       commit('AUTH_LOGOUT')
     }
-  },
+  }
 }

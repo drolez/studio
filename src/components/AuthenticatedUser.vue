@@ -25,5 +25,5 @@
 <style lang='stylus' scoped>
     @import './../assets/styles/colors.styl'
     .user
-        background pink
+        background $Dark-but-not-black
 </style>

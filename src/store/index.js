@@ -7,7 +7,7 @@ Vue.use(Vuex)
 const vuexPersist = new VuexPersistence({
   key: 'my-app',
   storage: localStorage,
-  reducer: state => ({auth: state.auth })
+  reducer: state => ({ auth: state.auth })
 })
 
 // Dynamically load modules from module files

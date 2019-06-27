@@ -26,5 +26,8 @@
 </script>
 
 <style lang='stylus' scoped>
-
+    @import './../assets/styles/colors.styl'
+    .auth
+        background $Dark-but-not-black
+        color: $Blurple
 </style>

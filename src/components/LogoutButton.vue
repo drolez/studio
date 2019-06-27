@@ -20,8 +20,9 @@
 </script>
 
 <style lang='stylus' scoped>
+    @import './../assets/styles/colors.styl'
     .logout
-        background purple
+        background $Dark-but-not-black
     button
         color black
         backround teal
