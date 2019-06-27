@@ -1,0 +1,59 @@
+@import '95-variables'
+
+html
+  box-sizing border-box
+*, *::before, *::after
+  box-sizing inherit
+  
+#app
+  font-family Tahoma, Arial, sans-serif
+  font-size .8rem
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  background-color var(--theme-bg)
+  color white
+  padding 8px
+  min-height 100vh
+  
+a
+  color var(--theme-grad-end)
+  text-decoration none
+  
+hr
+  border-color var(--ui-border)
+  margin 2px 0
+  
+input
+  border 2px inset var(--ui-border)
+  background-color var(--ui-highlight)
+  color white
+  outline none
+  padding 5px
+  padding-bottom 3px
+  border-radius 0
+  &:focus
+    border-color var(--theme-grad-end)
+  &::placeholder
+    color alpha(white, 80%)
+  
+
+button,
+input[type=button],
+input[type=submit]
+  display inline-flex
+  align-items center
+  padding 4px
+  background-color var(--ui-base)
+  color inherit
+  border-style outset
+  border-color var(--ui-border)
+  font-family inherit
+  outline none
+  user-select none
+  &:active
+    border-style inset
+  &:focus
+    background-color var(--ui-highlight)
+  img
+    margin-right 4px
+    max-height 24px
