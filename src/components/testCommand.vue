@@ -7,9 +7,10 @@
         input(v-model="message" name ="message")
         button(@click="sendSocket") send
         p Status: {{status}}
-        p Response:
-        pre.res {{ response }}
-        p(v-if="!response") None
+        .res
+            p.float Response:
+            p(v-if="!response").float  None
+            pre.float  {{ response }}
 </template>
 
 <script>
@@ -19,28 +20,33 @@
       return {
         message: '',
         response: '',
-        server: 'wss://82.114.198.147:4555',
+        server: 'wss://reye.me:4555',
         status: ''
       }
     },
     methods:
       {
-        sendSocket: async function () {
+        sendSocket: function () {
+          let self = this
           // Create WebSocket connection.
-          this.status = 'connecting'
-          const socket = new WebSocket(this.server)
-          // Connection opened
-          socket.addEventListener('open', async function (event) {
-            this.status = 'sending command'
-            await socket.send(this.message)
-            this.message = ''
-            this.status = 'command sent'
-          })
-          // Listen for messages
-          socket.addEventListener('message', async function (event) {
-            this.response = event.data
-            this.status = 'recieved data'
-          })
+          try {
+            self.status = 'sending command'
+            const socket = new WebSocket(this.server)
+            // Connection opened
+            socket.addEventListener('open', function (event) {
+              socket.send(self.message)
+              self.message = ''
+              self.status = 'command sent'
+            })
+            // Listen for messages
+            socket.addEventListener('message', function (event) {
+              self.response = event.data
+              self.status = 'recieved response'
+            })
+          } catch (e) {
+            self.status = 'error:'
+            self.response = e
+          }
         }
       }
   }
@@ -51,11 +57,12 @@
     .res
         background $Dark-but-not-black
     .command
+        background red
         display flex
         flex-direction column
         align-items center
         justify-content center
         backround teal
-    pre
-        background yellow
+    .float
+        float left
 </style>
