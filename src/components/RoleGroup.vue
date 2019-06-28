@@ -1,9 +1,11 @@
 <template lang="pug">
   .role-group
-    .group-name
-      img(src="@/assets/icons/folder.png")
+    input.cb(type="checkbox" :id="internalId" v-model="open")
+    label.group-name(:for="internalId" :id="internalId")
+      img(src="@/assets/icons/folder.png" v-if="open")
+      img(src="@/assets/icons/folder_closed.png" v-else)
       span {{name}}
-    .group-wrapper
+    .group-wrapper(v-if="open")
       slot
 </template>
 
@@ -11,20 +13,41 @@
   import RoleBadge from './RoleBadge'
   export default {
     props: {
-      name: String
+      name: String,
+      collapsed: Boolean
+    },
+    computed: {
+      internalId () {
+        return `role-group-${btoa(this.name)}`
+      }
+    },
+    data () {
+      return {
+        open: !this.collapsed
+      }
     },
     components: { RoleBadge }
   }
 </script>
 
 <style lang="stylus" scoped>
+.cb
+  display none
+
 .role-group
   margin 8px 4px
 
 .group-name
-  display flex
+  display inline-flex
   align-items center
   margin-bottom 4px
+  padding-right 4px
+  border 2px outset transparent
+  user-select none
+  &:hover, &:active
+    border-color var(--ui-border)
+  &:active
+    border-style inset
   img
     height 16px
     margin-right 4px
