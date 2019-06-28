@@ -25,6 +25,9 @@
       RoleGroup(name="Less cool roles" collapsed)
         RoleBadge(name="Swamp thing", color="rgb(150,180,20)")
         RoleBadge(name="Cerx", color="#33f")
+      hr
+      Toggle(v-model="toggleTest") Trigger me
+      h1(v-if="toggleTest") v-model TRIGGER
 </template>
 
 <script>
@@ -38,11 +41,17 @@
   import Gem from '@/components/Gem'
   import RoleBadge from '@/components/RoleBadge'
   import RoleGroup from '@/components/RoleGroup'
+  import Toggle from '@/components/Toggle'
   //
   import { mapGetters } from 'vuex'
 
   export default {
     name: 'home',
+    data () {
+      return {
+        toggleTest: null
+      }
+    },
     components: {
       LogoutButton,
       HelloWorld,
@@ -52,7 +61,8 @@
       Toolbar,
       Gem,
       RoleBadge,
-      RoleGroup
+      RoleGroup,
+      Toggle
     },
     computed: {
       ...mapGetters(['isAuthenticated'])
