@@ -1,6 +1,6 @@
 <template lang='pug'>
-    .logout
-        button(@click="logout") Log out
+    button(@click="logout")
+        | Log out
 </template>
 
 <script>

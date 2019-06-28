@@ -1,8 +1,14 @@
 <template lang='pug'>
     .user
-        | Login Status
+        | Login Status: {{ authStatus }}
+
         p(v-if='!isAuthenticated') Logged out
-        p(v-if='isAuthenticated') {{ authStatus }}
+        p(v-if='isAuthenticated')
+            b Token:
+            |{{ getToken.token }}
+        p(v-if='isAuthenticated')
+            b Expires:
+            |{{ getToken.ttl }}
 
 </template>
 
@@ -12,7 +18,7 @@
   export default {
     name: 'AuthenticatedUser',
     computed: {
-      ...mapGetters(['isAuthenticated', 'authStatus'])
+      ...mapGetters(['isAuthenticated', 'authStatus', 'getToken'])
     },
     methods: {
       login: function () {
