@@ -4,7 +4,7 @@
       .title-wrapper
         img(v-if='icon' :src='icon')
         span.window-title {{title}}
-      button.close x
+      button.close(@click="goHome") x
     slot
 </template>
 
@@ -13,6 +13,11 @@
     props: {
       title: String,
       icon: String
+    },
+    methods: {
+      goHome () {
+        this.$router.push('/')
+      }
     }
   }
 </script>

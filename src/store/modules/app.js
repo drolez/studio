@@ -4,8 +4,11 @@ export default {
   // for user related information
   state: {
     app: 'drolez',
+    user: {},
+    listRoles: {},
     socket: {
       isConnected: false,
+      isAuthorized: false,
       message: '',
       reconnectError: false
     }
@@ -13,6 +16,14 @@ export default {
   getters: {
   },
   mutations: {
+    auth_done (state, event) {
+      console.log('AUTHED')
+      state.socket.isAuthorized = true
+      state.user = event.Data
+    },
+    rolesList (state, event) {
+      state.listRoles = event.Data
+    },
     SOCKET_ONOPEN (state, event) {
       Vue.prototype.$socket = event.currentTarget
       state.socket.isConnected = true
@@ -25,7 +36,7 @@ export default {
     },
     // default handler called for all methods
     SOCKET_ONMESSAGE (state, message) {
-      state.socket.message = message.data
+      state.socket.message = message
     },
     // mutations for reconnect methods
     SOCKET_RECONNECT (state, count) {

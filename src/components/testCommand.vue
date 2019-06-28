@@ -5,7 +5,7 @@
         input(v-model="server" name="server")
         label(for="message") Message
         input(v-model="message" name ="message")
-        button(@click="sendSocket") send
+        button(@click="sendMessage(message)") send
         p Status: {{status}}
         .res
             p.float Response:
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
   export default {
     name: 'testCommand',
     data: function () {
@@ -26,28 +27,7 @@
     },
     methods:
       {
-        sendSocket: function () {
-          let self = this
-          // Create WebSocket connection.
-          try {
-            self.status = 'sending command'
-            const socket = new WebSocket(this.server)
-            // Connection opened
-            socket.addEventListener('open', function (event) {
-              socket.send(self.message)
-              self.message = ''
-              self.status = 'command sent'
-            })
-            // Listen for messages
-            socket.addEventListener('message', function (event) {
-              self.response = event.data
-              self.status = 'recieved response'
-            })
-          } catch (e) {
-            self.status = 'error:'
-            self.response = e
-          }
-        }
+        ...mapActions(['sendMessage'])
       }
   }
 </script>
