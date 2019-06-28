@@ -11,6 +11,20 @@
         LoginButton(v-if='!isAuthenticated')
       HelloWorld(msg="Drolez Studio")
       Gem(color="hsl(150, 80%, 50%)")
+      Gem
+      Gem(color="red")
+      Gem(color="#39f")
+      hr
+      RoleBadge(name="DrolezDev", color="purple")
+      RoleBadge(name="Googly-eyed neso", color="hotpink")
+      RoleBadge
+      hr
+      RoleGroup(name="Cool roles")
+        RoleBadge(name="DrolezDev", color="purple")
+        RoleBadge(name="Googly-eyed neso", color="hotpink")
+      RoleGroup(name="Less cool roles" collapsed)
+        RoleBadge(name="Swamp thing", color="rgb(150,180,20)")
+        RoleBadge(name="Cerx", color="#33f")
 </template>
 
 <script>
@@ -22,6 +36,8 @@
   import Window from '@/components/Window'
   import Toolbar from '@/components/Toolbar'
   import Gem from '@/components/Gem'
+  import RoleBadge from '@/components/RoleBadge'
+  import RoleGroup from '@/components/RoleGroup'
   //
   import { mapGetters } from 'vuex'
 
@@ -34,7 +50,9 @@
       //
       Window,
       Toolbar,
-      Gem
+      Gem,
+      RoleBadge,
+      RoleGroup
     },
     computed: {
       ...mapGetters(['isAuthenticated'])
