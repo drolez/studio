@@ -28,6 +28,8 @@
       hr
       Toggle(v-model="toggleTest") Trigger me
       h1(v-if="toggleTest") v-model TRIGGER
+      hr
+      User(:user="{username: 'Ovi', avatar: 'https://cdn.discordapp.com/avatars/399106406026051597/25d4e46f00edad9304582a21b4d4b8e3.png'}")
 </template>
 
 <script>
@@ -42,6 +44,7 @@
   import RoleBadge from '@/components/RoleBadge'
   import RoleGroup from '@/components/RoleGroup'
   import Toggle from '@/components/Toggle'
+  import User from '@/components/User'
   //
   import { mapGetters } from 'vuex'
 
@@ -62,7 +65,8 @@
       Gem,
       RoleBadge,
       RoleGroup,
-      Toggle
+      Toggle,
+      User
     },
     computed: {
       ...mapGetters(['isAuthenticated'])
