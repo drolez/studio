@@ -10,8 +10,6 @@
 </script>
 
 <style lang="stylus" scoped>
-@import '../assets/styles/95-variables'
-
 line-color = #2A2A2A
 
 .toolbar

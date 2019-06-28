@@ -18,8 +18,6 @@
 </script>
 
 <style lang="stylus" scoped>
-@import '../assets/styles/95-variables'
-
 .window
   background-color var(--ui-base)
   border 2px outset var(--ui-border)
