@@ -21,9 +21,8 @@
 
 <style lang='stylus' scoped>
     @import './../assets/styles/colors.styl'
-    .logout
-        background $Dark-but-not-black
     button
-        color black
-        backround teal
+        color $Dark-but-not-black
+        justify-self flex-end
+
 </style>

@@ -1,8 +1,8 @@
 <template lang="pug">
   .user
-    img.profile-pic(:src="user.avatar")
+    img.profile-pic(:src="user.Avatar")
     .user-info
-      .name {{user.username}}
+      .name {{user.Username}}\#{{user.Discriminator}}
       .roles
         Gem(v-for="roleId in roles" :key="roleId" :color="getColor(roleId)")
 </template>
@@ -10,6 +10,7 @@
 <script>
   import Gem from './Gem'
   export default {
+    name: 'User',
     props: {
       user: Object,
       roles: Array

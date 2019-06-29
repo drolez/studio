@@ -15,7 +15,11 @@ line-color = #2A2A2A
 
 .toolbar
   position relative
+  width 100%
   display flex
+  align-items center
+  justify-content flex-start
+  flex-flow row nowrap
   padding 2px
   padding-bottom 4px
   margin-bottom 2px

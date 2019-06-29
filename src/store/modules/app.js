@@ -5,6 +5,7 @@ export default {
   state: {
     app: 'drolez',
     user: {},
+    guilds: {},
     listRoles: {},
     socket: {
       isConnected: false,
@@ -21,6 +22,9 @@ export default {
       state.socket.isAuthorized = true
       state.user = event.Data
     },
+    guilds_done (state, event) {
+      state.guilds = event.Data
+    },
     rolesList (state, event) {
       state.listRoles = event.Data
     },
@@ -30,6 +34,7 @@ export default {
     },
     SOCKET_ONCLOSE (state, event) {
       state.socket.isConnected = false
+      state.socket.isAuthorized = false
     },
     SOCKET_ONERROR (state, event) {
       console.error(state, event)
@@ -47,9 +52,24 @@ export default {
     }
   },
   actions: {
+    auth_done ({ commit, state }, event) {
+      commit('auth_done', event)
+    },
     sendMessage ({ commit, state }, message) {
       console.log(message)
       Vue.prototype.$socket.send(message)
+    },
+    authorize ({ dispatch }, token) {
+      dispatch('sendMessage', `auth/${token.token}/${token.ttl}`)
+    },
+    getGuilds ({ state, dispatch }, id) {
+      dispatch('sendMessage', `guilds/${id}`)
+    },
+    getGuildRoles ({ state, dispatch }, guildid) {
+      dispatch('sendMessage', `roles-list/${guildid}`)
+    },
+    guilds ({ commit, state }, event) {
+      commit('guilds_done', event)
     }
   }
 }

@@ -4,7 +4,7 @@
       .title-wrapper
         img(v-if='icon' :src='icon')
         span.window-title {{title}}
-      button.close(@click="goHome") x
+      button.close(v-if="!static" @click="goHome") x
     slot
 </template>
 
@@ -12,7 +12,8 @@
   export default {
     props: {
       title: String,
-      icon: String
+      icon: String,
+      static: Boolean
     },
     methods: {
       goHome () {
